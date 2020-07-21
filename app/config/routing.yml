@@ -1,3 +1,7 @@
+donation:
+    resource: "@DonationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 refugee:
     resource: "@RefugeeBundle/Resources/config/routing.yml"
     prefix:   /
