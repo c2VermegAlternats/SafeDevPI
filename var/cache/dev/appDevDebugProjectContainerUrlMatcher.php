@@ -107,25 +107,35 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // lost_and_found_homepage
+        // association_homepage
         if ('' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'LostAndFoundBundle\\Controller\\DefaultController::indexAction',  '_route' => 'lost_and_found_homepage',);
+            $ret = array (  '_controller' => 'AssociationBundle\\Controller\\DefaultController::indexAction',  '_route' => 'association_homepage',);
             if ('/' === substr($pathinfo, -1)) {
                 // no-op
             } elseif ('GET' !== $canonicalMethod) {
-                goto not_lost_and_found_homepage;
+                goto not_association_homepage;
             } else {
-                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'lost_and_found_homepage'));
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'association_homepage'));
             }
 
             return $ret;
         }
-        not_lost_and_found_homepage:
+        not_association_homepage:
 
         if (0 === strpos($pathinfo, '/add')) {
-            // addObject
-            if ('/addObj' === $pathinfo) {
-                return array (  '_controller' => 'LostAndFoundBundle\\Controller\\ObjectLostController::addAction',  '_route' => 'addObject',);
+            // add_categorie
+            if ('/addCategorie' === $pathinfo) {
+                return array (  '_controller' => 'AssociationBundle\\Controller\\CategorieController::addCategorieAction',  '_route' => 'add_categorie',);
+            }
+
+            // add_reclamation
+            if ('/addReclamation' === $pathinfo) {
+                return array (  '_controller' => 'AssociationBundle\\Controller\\ReclamationController::addReclamationAction',  '_route' => 'add_reclamation',);
+            }
+
+            // add_association
+            if ('/addAssociation' === $pathinfo) {
+                return array (  '_controller' => 'AssociationBundle\\Controller\\AssociationController::addAssociationAction',  '_route' => 'add_association',);
             }
 
             // add
@@ -145,51 +155,20 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'RefugeeBundle\\Controller\\RefugeeController::getAllRefugeesAction',  '_route' => 'affiche',);
         }
 
-        if (0 === strpos($pathinfo, '/get')) {
-            // get_allObject
-            if ('/getAllobj' === $pathinfo) {
-                return array (  '_controller' => 'LostAndFoundBundle\\Controller\\ObjectLostController::getAllAction',  '_route' => 'get_allObject',);
+        if (0 === strpos($pathinfo, '/update')) {
+            // update_categorie
+            if (0 === strpos($pathinfo, '/updateCategorie') && preg_match('#^/updateCategorie/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'update_categorie']), array (  '_controller' => 'AssociationBundle\\Controller\\CategorieController::updateCategorieAction',));
             }
 
-            // get_all
-            if ('/getAllBen' === $pathinfo) {
-                return array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::getAllAction',  '_route' => 'get_all',);
+            // update_reclamation
+            if ('/updateReclamation' === $pathinfo) {
+                return array (  '_controller' => 'AssociationBundle\\Controller\\ReclamationController::updateReclamationAction',  '_route' => 'update_reclamation',);
             }
 
-            // getObj
-            if (0 === strpos($pathinfo, '/getObj') && preg_match('#^/getObj/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'getObj']), array (  '_controller' => 'LostAndFoundBundle\\Controller\\ObjectLostController::getAction',));
-            }
-
-            // get_benevole
-            if (0 === strpos($pathinfo, '/getBenevoleBen') && preg_match('#^/getBenevoleBen/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'get_benevole']), array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::getBenevoleAction',));
-            }
-
-        }
-
-        elseif (0 === strpos($pathinfo, '/delete')) {
-            // deleteObj
-            if (0 === strpos($pathinfo, '/deleteObj') && preg_match('#^/deleteObj/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteObj']), array (  '_controller' => 'LostAndFoundBundle\\Controller\\ObjectLostController::deleteAction',));
-            }
-
-            // delete
-            if (preg_match('#^/delete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete']), array (  '_controller' => 'RefugeeBundle\\Controller\\RefugeeController::deleteAction',));
-            }
-
-            // deleteBen
-            if (0 === strpos($pathinfo, '/deleteBen') && preg_match('#^/deleteBen/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteBen']), array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::deleteAction',));
-            }
-
-        }
-
-        elseif (0 === strpos($pathinfo, '/update')) {
-            // updateObj
-            if (0 === strpos($pathinfo, '/updateObj') && preg_match('#^/updateObj/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'updateObj']), array (  '_controller' => 'LostAndFoundBundle\\Controller\\ObjectLostController::updateAction',));
+            // update_association
+            if (0 === strpos($pathinfo, '/updateAssociation') && preg_match('#^/updateAssociation/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'update_association']), array (  '_controller' => 'AssociationBundle\\Controller\\AssociationController::updateAssociationAction',));
             }
 
             // update
@@ -200,6 +179,70 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // update_benevole
             if (0 === strpos($pathinfo, '/updateBenevole') && preg_match('#^/updateBenevole/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'update_benevole']), array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::updateBenevoleAction',));
+            }
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/get')) {
+            if (0 === strpos($pathinfo, '/getAll')) {
+                // get_all_categorie
+                if ('/getAllCategorie' === $pathinfo) {
+                    return array (  '_controller' => 'AssociationBundle\\Controller\\CategorieController::getAllCategorieAction',  '_route' => 'get_all_categorie',);
+                }
+
+                // get_all_reclamations
+                if ('/getAllReclamations' === $pathinfo) {
+                    return array (  '_controller' => 'AssociationBundle\\Controller\\ReclamationController::getAllReclamationsAction',  '_route' => 'get_all_reclamations',);
+                }
+
+                // get_all_association
+                if ('/getAllAssociation' === $pathinfo) {
+                    return array (  '_controller' => 'AssociationBundle\\Controller\\AssociationController::getAllAssociationAction',  '_route' => 'get_all_association',);
+                }
+
+                // get_all
+                if ('/getAllBen' === $pathinfo) {
+                    return array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::getAllAction',  '_route' => 'get_all',);
+                }
+
+            }
+
+            // get_association
+            if (0 === strpos($pathinfo, '/getAssociation') && preg_match('#^/getAssociation/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'get_association']), array (  '_controller' => 'AssociationBundle\\Controller\\AssociationController::getAssociationAction',));
+            }
+
+            // get_benevole
+            if (0 === strpos($pathinfo, '/getBenevoleBen') && preg_match('#^/getBenevoleBen/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'get_benevole']), array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::getBenevoleAction',));
+            }
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/delete')) {
+            // delete_categorie
+            if (0 === strpos($pathinfo, '/deleteCategorie') && preg_match('#^/deleteCategorie/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_categorie']), array (  '_controller' => 'AssociationBundle\\Controller\\CategorieController::deleteCategorieAction',));
+            }
+
+            // delete_reclamation
+            if ('/deleteReclamation' === $pathinfo) {
+                return array (  '_controller' => 'AssociationBundle\\Controller\\ReclamationController::deleteReclamationAction',  '_route' => 'delete_reclamation',);
+            }
+
+            // delete_association
+            if (0 === strpos($pathinfo, '/deleteAssociation') && preg_match('#^/deleteAssociation(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_association']), array (  '_controller' => 'AssociationBundle\\Controller\\AssociationController::deleteAssociationAction',));
+            }
+
+            // delete
+            if (preg_match('#^/delete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete']), array (  '_controller' => 'RefugeeBundle\\Controller\\RefugeeController::deleteAction',));
+            }
+
+            // deleteBen
+            if (0 === strpos($pathinfo, '/deleteBen') && preg_match('#^/deleteBen/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteBen']), array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::deleteAction',));
             }
 
         }
