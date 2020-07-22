@@ -107,25 +107,33 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // lost_and_found_homepage
+        // event_homepage
         if ('' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'LostAndFoundBundle\\Controller\\DefaultController::indexAction',  '_route' => 'lost_and_found_homepage',);
+            $ret = array (  '_controller' => 'EventBundle\\Controller\\DefaultController::indexAction',  '_route' => 'event_homepage',);
             if ('/' === substr($pathinfo, -1)) {
                 // no-op
             } elseif ('GET' !== $canonicalMethod) {
-                goto not_lost_and_found_homepage;
+                goto not_event_homepage;
             } else {
-                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'lost_and_found_homepage'));
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'event_homepage'));
             }
 
             return $ret;
         }
-        not_lost_and_found_homepage:
+        not_event_homepage:
 
         if (0 === strpos($pathinfo, '/add')) {
-            // addObject
-            if ('/addObj' === $pathinfo) {
-                return array (  '_controller' => 'LostAndFoundBundle\\Controller\\ObjectLostController::addAction',  '_route' => 'addObject',);
+            if (0 === strpos($pathinfo, '/addEvent')) {
+                // addEvent
+                if (preg_match('#^/addEvent/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'addEvent']), array (  '_controller' => 'EventBundle\\Controller\\EventController::addEventAction',));
+                }
+
+                // addEventCategory
+                if ('/addEventCategory' === $pathinfo) {
+                    return array (  '_controller' => 'EventBundle:EventCategory:addEventCategory',  '_route' => 'addEventCategory',);
+                }
+
             }
 
             // add
@@ -145,33 +153,18 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'RefugeeBundle\\Controller\\RefugeeController::getAllRefugeesAction',  '_route' => 'affiche',);
         }
 
-        if (0 === strpos($pathinfo, '/get')) {
-            // get_allObject
-            if ('/getAllobj' === $pathinfo) {
-                return array (  '_controller' => 'LostAndFoundBundle\\Controller\\ObjectLostController::getAllAction',  '_route' => 'get_allObject',);
-            }
+        if (0 === strpos($pathinfo, '/delete')) {
+            if (0 === strpos($pathinfo, '/deleteEvent')) {
+                // deleteEvent
+                if (preg_match('#^/deleteEvent/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteEvent']), array (  '_controller' => 'EventBundle\\Controller\\EventController::deleteEventAction',));
+                }
 
-            // get_all
-            if ('/getAllBen' === $pathinfo) {
-                return array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::getAllAction',  '_route' => 'get_all',);
-            }
+                // deleteEventCategory
+                if (0 === strpos($pathinfo, '/deleteEventCategory') && preg_match('#^/deleteEventCategory/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteEventCategory']), array (  '_controller' => 'EventBundle:EventCategory:deleteEventCategory',));
+                }
 
-            // getObj
-            if (0 === strpos($pathinfo, '/getObj') && preg_match('#^/getObj/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'getObj']), array (  '_controller' => 'LostAndFoundBundle\\Controller\\ObjectLostController::getAction',));
-            }
-
-            // get_benevole
-            if (0 === strpos($pathinfo, '/getBenevoleBen') && preg_match('#^/getBenevoleBen/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'get_benevole']), array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::getBenevoleAction',));
-            }
-
-        }
-
-        elseif (0 === strpos($pathinfo, '/delete')) {
-            // deleteObj
-            if (0 === strpos($pathinfo, '/deleteObj') && preg_match('#^/deleteObj/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'deleteObj']), array (  '_controller' => 'LostAndFoundBundle\\Controller\\ObjectLostController::deleteAction',));
             }
 
             // delete
@@ -187,9 +180,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         elseif (0 === strpos($pathinfo, '/update')) {
-            // updateObj
-            if (0 === strpos($pathinfo, '/updateObj') && preg_match('#^/updateObj/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'updateObj']), array (  '_controller' => 'LostAndFoundBundle\\Controller\\ObjectLostController::updateAction',));
+            if (0 === strpos($pathinfo, '/updateEvent')) {
+                // updateEvent
+                if (preg_match('#^/updateEvent/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'updateEvent']), array (  '_controller' => 'EventBundle\\Controller\\EventController::updateEventAction',));
+                }
+
+                // updateEventCategory
+                if (0 === strpos($pathinfo, '/updateEventCategory') && preg_match('#^/updateEventCategory/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'updateEventCategory']), array (  '_controller' => 'EventBundle:EventCategory:updateEventCategory',));
+                }
+
             }
 
             // update
@@ -200,6 +201,32 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // update_benevole
             if (0 === strpos($pathinfo, '/updateBenevole') && preg_match('#^/updateBenevole/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'update_benevole']), array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::updateBenevoleAction',));
+            }
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/listEvent')) {
+            // listEvent
+            if ('/listEvent' === $pathinfo) {
+                return array (  '_controller' => 'EventBundle\\Controller\\EventController::listEventAction',  '_route' => 'listEvent',);
+            }
+
+            // listEventCategory
+            if ('/listEventCategory' === $pathinfo) {
+                return array (  '_controller' => 'EventBundle:EventCategory:listEventCategory',  '_route' => 'listEventCategory',);
+            }
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/searchEvent')) {
+            // searchEvent
+            if (preg_match('#^/searchEvent/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'searchEvent']), array (  '_controller' => 'EventBundle\\Controller\\EventController::searchEventAction',));
+            }
+
+            // searchEventCategory
+            if (0 === strpos($pathinfo, '/searchEventCategory') && preg_match('#^/searchEventCategory/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'searchEventCategory']), array (  '_controller' => 'EventBundle:EventCategory:searchEventCategory',));
             }
 
         }
@@ -222,6 +249,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         // recherche
         if (0 === strpos($pathinfo, '/recherche') && preg_match('#^/recherche/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, ['_route' => 'recherche']), array (  '_controller' => 'RefugeeBundle\\Controller\\RefugeeController::getRefugeeAction',));
+        }
+
+        // get_all
+        if ('/getAllBen' === $pathinfo) {
+            return array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::getAllAction',  '_route' => 'get_all',);
+        }
+
+        // get_benevole
+        if (0 === strpos($pathinfo, '/getBenevoleBen') && preg_match('#^/getBenevoleBen/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'get_benevole']), array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::getBenevoleAction',));
         }
 
         // homepage
