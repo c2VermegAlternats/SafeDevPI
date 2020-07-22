@@ -21,6 +21,8 @@
       <parameter key="NelmioCorsBundle">Nelmio\CorsBundle\NelmioCorsBundle</parameter>
       <parameter key="RefugeeBundle">RefugeeBundle\RefugeeBundle</parameter>
       <parameter key="AssociationBundle">AssociationBundle\AssociationBundle</parameter>
+      <parameter key="DonationBundle">DonationBundle\DonationBundle</parameter>
+      <parameter key="UserBundle">UserBundle\UserBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -87,6 +89,16 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">C:\xampp\htdocs\SafeDevPI\src\AssociationBundle</parameter>
         <parameter key="namespace">AssociationBundle</parameter>
+      </parameter>
+      <parameter key="DonationBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">C:\xampp\htdocs\SafeDevPI\src\DonationBundle</parameter>
+        <parameter key="namespace">DonationBundle</parameter>
+      </parameter>
+      <parameter key="UserBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">C:\xampp\htdocs\SafeDevPI\src\UserBundle</parameter>
+        <parameter key="namespace">UserBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -602,6 +614,7 @@
     <service id="AppBundle\Controller\DefaultController" class="AppBundle\Controller\DefaultController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
+    <service id="donation.needs" class="DonationBundle\Controller\NeedsController"/>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -2828,6 +2841,22 @@
         <argument>!Association</argument>
       </call>
       <call method="addPath">
+        <argument>C:\xampp\htdocs\SafeDevPI\src\DonationBundle/Resources/views</argument>
+        <argument>Donation</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\SafeDevPI\src\DonationBundle/Resources/views</argument>
+        <argument>!Donation</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\SafeDevPI\src\UserBundle/Resources/views</argument>
+        <argument>User</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\SafeDevPI\src\UserBundle/Resources/views</argument>
+        <argument>!User</argument>
+      </call>
+      <call method="addPath">
         <argument>C:\xampp\htdocs\SafeDevPI\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
@@ -3417,6 +3446,8 @@
         <argument type="collection">
           <argument key="RefugeeBundle">RefugeeBundle\Entity</argument>
           <argument key="AssociationBundle">AssociationBundle\Entity</argument>
+          <argument key="DonationBundle">DonationBundle\Entity</argument>
+          <argument key="UserBundle">UserBundle\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCacheImpl">
@@ -3464,6 +3495,8 @@
       <argument type="collection">
         <argument>C:\xampp\htdocs\SafeDevPI\src\RefugeeBundle\Entity</argument>
         <argument>C:\xampp\htdocs\SafeDevPI\src\AssociationBundle\Entity</argument>
+        <argument>C:\xampp\htdocs\SafeDevPI\src\DonationBundle\Entity</argument>
+        <argument>C:\xampp\htdocs\SafeDevPI\src\UserBundle\Entity</argument>
       </argument>
     </service>
     <service id="doctrine.orm.default_metadata_driver" class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
@@ -3474,6 +3507,14 @@
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
         <argument>AssociationBundle\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+        <argument>DonationBundle\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+        <argument>UserBundle\Entity</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache" public="true">

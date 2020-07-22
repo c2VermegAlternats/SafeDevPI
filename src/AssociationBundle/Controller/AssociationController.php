@@ -3,6 +3,7 @@
 namespace AssociationBundle\Controller;
 
 use AssociationBundle\Entity\Association;
+use AssociationBundle\Entity\Categorie;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,13 +18,16 @@ class AssociationController extends Controller
 //deserialize data: création d'un objet 'Refugee' à partir des données json envoyées
         $association = $this->get('jms_serializer')->deserialize($data, 'AssociationBundle\Entity\Association', 'json');
 //ajout dans la base
-        $categorie = $request->get('idC');
+        $categorie = $request->get('id');
         $em = $this->getDoctrine()->getManager();
-        $em->persist($association);
-        $em->flush();
-        $response = new Response($data);
-        $response->headers->set('Access-Control-Allow-Origin', 'http://localhost:4200/refugees');
-        return $response;
+
+            $em->persist($association);
+            $em->flush();
+            $response = new Response('Add Succeful');
+            $response->headers->set('Access-Control-Allow-Origin', 'http://localhost:4200/refugees');
+            return $response;
+
+
     }
 
     public function updateAssociationAction(Request $request, $id)
@@ -41,9 +45,13 @@ class AssociationController extends Controller
         $association->setAdresse($newdata->getAdresse());
         $association->setNomPresident($newdata->getNomPresident());
         $association->setBudget($newdata->getBudget());
+        $association->setCategorie($newdata->getCategorie());
         $em->persist($association);
         $em->flush();
-        return new JsonResponse(["msg" => "success"], 200);
+
+        $response = new Response('Updated Successfully');
+        $response->headers->set('Access-Control-Allow-Origin', 'http://localhost:4200/refugees');
+        return $response;
     }
 
     public function getAllAssociationAction()
@@ -70,7 +78,9 @@ class AssociationController extends Controller
         $association=$em->getRepository(Association::class)->find($id);
         $em->remove($association);
         $em->flush();
-        return new Response('Association supprimé avec succès') ;
+        $response = new Response('Deleted Successfully');
+        $response->headers->set('Access-Control-Allow-Origin', 'http://localhost:4200/refugees');
+        return $response;
     }
 
 }

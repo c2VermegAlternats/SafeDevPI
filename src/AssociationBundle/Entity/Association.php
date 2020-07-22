@@ -81,19 +81,16 @@ class Association
      * @var int
      *
 
-     * @ORM\ManyToOne(targetEntity="AssociationBundle\Entity\User")
-     * @ORM\JoinColumn(name="idUser",referencedColumnName="id",
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="id_user",referencedColumnName="id",
     nullable=true,onDelete="CASCADE")
      */
-    private $idUser;
+    private $id_user;
 
     /**
-     * @var int
+     * @var string
      *
-
-     * @ORM\ManyToOne(targetEntity="AssociationBundle\Entity\Categorie" )
-     * @ORM\JoinColumn(name="categorie",referencedColumnName="idC",
-    nullable=true)
+     * @ORM\Column(name="categoriet", type="string", length=255, nullable=true)
      */
     private $categorie;
     /**
@@ -303,19 +300,21 @@ class Association
      */
     public function getIdUser()
     {
-        return $this->idUser;
+        return $this->id_ser;
     }
 
     /**
      * @param int $idUser
      */
-    public function setIdUser($idUser)
+    public function setIdUser($id_user)
     {
-        $this->idUser = $idUser;
+        $this->id_user = $id_user;
     }
 
     /**
-     * @return mixed
+     * Get nomPresident
+     *
+     * @return string
      */
     public function getCategorie()
     {
@@ -323,7 +322,11 @@ class Association
     }
 
     /**
-     * @param mixed $categorie
+     * Set categorie
+     *
+     * @param string $categorie
+     *
+     * @return Association
      */
     public function setCategorie($categorie)
     {

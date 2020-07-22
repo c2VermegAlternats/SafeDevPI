@@ -2,22 +2,6 @@ association_homepage:
     path:     /
     defaults: { _controller: AssociationBundle:Default:index }
 
-add_categorie:
-    path:     /addCategorie
-    defaults: { _controller: AssociationBundle:Categorie:addCategorie }
-
-update_categorie:
-    path:     /updateCategorie/{id}
-    defaults: { _controller: AssociationBundle:Categorie:updateCategorie }
-
-get_all_categorie:
-    path:     /getAllCategorie
-    defaults: { _controller: AssociationBundle:Categorie:getAllCategorie }
-
-delete_categorie:
-    path:     /deleteCategorie/{id}
-    defaults: { _controller: AssociationBundle:Categorie:deleteCategorie }
-
 add_reclamation:
     path:     /addReclamation
     defaults: { _controller: AssociationBundle:Reclamation:addReclamation }

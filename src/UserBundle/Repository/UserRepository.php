@@ -1,6 +1,6 @@
 <?php
 
-namespace AssociationBundle\Repository;
+namespace UserBundle\Repository;
 
 /**
  * UserRepository

@@ -40,7 +40,7 @@ class Reclamation
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="AssociationBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
      * @ORM\JoinColumn(name="idUser",referencedColumnName="id",
     nullable=true,onDelete="CASCADE")
      */

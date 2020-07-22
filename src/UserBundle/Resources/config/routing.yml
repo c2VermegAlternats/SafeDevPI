@@ -1,0 +1,23 @@
+user_homepage:
+    path:     /
+    defaults: { _controller: UserBundle:Default:index }
+
+add_user:
+    path:     /addUser
+    defaults: { _controller: UserBundle:User:addUser }
+
+update_user:
+    path:     /updateUser/{id}
+    defaults: { _controller: UserBundle:User:updateUser }
+
+get_user:
+    path:     /getUser/{id}
+    defaults: { _controller: UserBundle:User:getUser }
+
+get_all_users:
+    path:     /getAllUsers
+    defaults: { _controller: UserBundle:User:getAllUsers }
+
+delete_user:
+    path:     /deleteUser/{id}
+    defaults: { _controller: UserBundle:User:deleteUser }

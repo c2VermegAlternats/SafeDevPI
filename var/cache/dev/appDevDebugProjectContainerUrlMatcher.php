@@ -107,25 +107,25 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // association_homepage
+        // user_homepage
         if ('' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'AssociationBundle\\Controller\\DefaultController::indexAction',  '_route' => 'association_homepage',);
+            $ret = array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_homepage',);
             if ('/' === substr($pathinfo, -1)) {
                 // no-op
             } elseif ('GET' !== $canonicalMethod) {
-                goto not_association_homepage;
+                goto not_user_homepage;
             } else {
-                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'association_homepage'));
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'user_homepage'));
             }
 
             return $ret;
         }
-        not_association_homepage:
+        not_user_homepage:
 
         if (0 === strpos($pathinfo, '/add')) {
-            // add_categorie
-            if ('/addCategorie' === $pathinfo) {
-                return array (  '_controller' => 'AssociationBundle\\Controller\\CategorieController::addCategorieAction',  '_route' => 'add_categorie',);
+            // add_user
+            if ('/addUser' === $pathinfo) {
+                return array (  '_controller' => 'UserBundle\\Controller\\UserController::addUserAction',  '_route' => 'add_user',);
             }
 
             // add_reclamation
@@ -136,6 +136,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // add_association
             if ('/addAssociation' === $pathinfo) {
                 return array (  '_controller' => 'AssociationBundle\\Controller\\AssociationController::addAssociationAction',  '_route' => 'add_association',);
+            }
+
+            // add_don
+            if (0 === strpos($pathinfo, '/addDon') && preg_match('#^/addDon/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'add_don']), array (  '_controller' => 'DonationBundle\\Controller\\DonController::addDonAction',));
+            }
+
+            // add_needs
+            if ('/addNeeds' === $pathinfo) {
+                return array (  '_controller' => 'DonationBundle\\Controller\\NeedsController::addNeedsAction',  '_route' => 'add_needs',);
             }
 
             // add
@@ -156,9 +166,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         if (0 === strpos($pathinfo, '/update')) {
-            // update_categorie
-            if (0 === strpos($pathinfo, '/updateCategorie') && preg_match('#^/updateCategorie/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'update_categorie']), array (  '_controller' => 'AssociationBundle\\Controller\\CategorieController::updateCategorieAction',));
+            // update_user
+            if (0 === strpos($pathinfo, '/updateUser') && preg_match('#^/updateUser/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'update_user']), array (  '_controller' => 'UserBundle\\Controller\\UserController::updateUserAction',));
             }
 
             // update_reclamation
@@ -169,6 +179,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // update_association
             if (0 === strpos($pathinfo, '/updateAssociation') && preg_match('#^/updateAssociation/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'update_association']), array (  '_controller' => 'AssociationBundle\\Controller\\AssociationController::updateAssociationAction',));
+            }
+
+            // update_don
+            if (0 === strpos($pathinfo, '/updateDon') && preg_match('#^/updateDon/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'update_don']), array (  '_controller' => 'DonationBundle\\Controller\\DonController::updateDonAction',));
+            }
+
+            // update_needs
+            if (0 === strpos($pathinfo, '/updateNeeds') && preg_match('#^/updateNeeds/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'update_needs']), array (  '_controller' => 'DonationBundle\\Controller\\NeedsController::updateNeedsAction',));
             }
 
             // update
@@ -184,10 +204,15 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         elseif (0 === strpos($pathinfo, '/get')) {
+            // get_user
+            if (0 === strpos($pathinfo, '/getUser') && preg_match('#^/getUser/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'get_user']), array (  '_controller' => 'UserBundle\\Controller\\UserController::getUserAction',));
+            }
+
             if (0 === strpos($pathinfo, '/getAll')) {
-                // get_all_categorie
-                if ('/getAllCategorie' === $pathinfo) {
-                    return array (  '_controller' => 'AssociationBundle\\Controller\\CategorieController::getAllCategorieAction',  '_route' => 'get_all_categorie',);
+                // get_all_users
+                if ('/getAllUsers' === $pathinfo) {
+                    return array (  '_controller' => 'UserBundle\\Controller\\UserController::getAllUsersAction',  '_route' => 'get_all_users',);
                 }
 
                 // get_all_reclamations
@@ -198,6 +223,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 // get_all_association
                 if ('/getAllAssociation' === $pathinfo) {
                     return array (  '_controller' => 'AssociationBundle\\Controller\\AssociationController::getAllAssociationAction',  '_route' => 'get_all_association',);
+                }
+
+                // get_all_don
+                if ('/getAllDon' === $pathinfo) {
+                    return array (  '_controller' => 'DonationBundle\\Controller\\DonController::getAllDonAction',  '_route' => 'get_all_don',);
+                }
+
+                // get_all_needs
+                if ('/getAllNeeds' === $pathinfo) {
+                    return array (  '_controller' => 'DonationBundle\\Controller\\NeedsController::getAllNeedsAction',  '_route' => 'get_all_needs',);
                 }
 
                 // get_all
@@ -212,6 +247,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'get_association']), array (  '_controller' => 'AssociationBundle\\Controller\\AssociationController::getAssociationAction',));
             }
 
+            // get_don
+            if (0 === strpos($pathinfo, '/getDon') && preg_match('#^/getDon/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'get_don']), array (  '_controller' => 'DonationBundle\\Controller\\DonController::getDonAction',));
+            }
+
+            // get_needs
+            if (0 === strpos($pathinfo, '/getNeeds') && preg_match('#^/getNeeds/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'get_needs']), array (  '_controller' => 'DonationBundle\\Controller\\NeedsController::getNeedsAction',));
+            }
+
             // get_benevole
             if (0 === strpos($pathinfo, '/getBenevoleBen') && preg_match('#^/getBenevoleBen/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'get_benevole']), array (  '_controller' => 'RefugeeBundle\\Controller\\BenevoleController::getBenevoleAction',));
@@ -220,9 +265,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         elseif (0 === strpos($pathinfo, '/delete')) {
-            // delete_categorie
-            if (0 === strpos($pathinfo, '/deleteCategorie') && preg_match('#^/deleteCategorie/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_categorie']), array (  '_controller' => 'AssociationBundle\\Controller\\CategorieController::deleteCategorieAction',));
+            // delete_user
+            if (0 === strpos($pathinfo, '/deleteUser') && preg_match('#^/deleteUser/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_user']), array (  '_controller' => 'UserBundle\\Controller\\UserController::deleteUserAction',));
             }
 
             // delete_reclamation
@@ -233,6 +278,24 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // delete_association
             if (0 === strpos($pathinfo, '/deleteAssociation') && preg_match('#^/deleteAssociation(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_association']), array (  '_controller' => 'AssociationBundle\\Controller\\AssociationController::deleteAssociationAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/deleteDon')) {
+                // delete_don
+                if (preg_match('#^/deleteDon/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_don']), array (  '_controller' => 'DonationBundle\\Controller\\DonController::deleteDonAction',));
+                }
+
+                // delete_dron
+                if (preg_match('#^/deleteDon/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_dron']), array (  '_controller' => 'DonationBundle\\Controller\\DonController::deleteDonAction',));
+                }
+
+            }
+
+            // delete_needs
+            if (0 === strpos($pathinfo, '/deleteNeeds') && preg_match('#^/deleteNeeds/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_needs']), array (  '_controller' => 'DonationBundle\\Controller\\NeedsController::deleteNeedsAction',));
             }
 
             // delete
@@ -246,6 +309,36 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
 
         }
+
+        // association_homepage
+        if ('' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'AssociationBundle\\Controller\\DefaultController::indexAction',  '_route' => 'association_homepage',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_association_homepage;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'association_homepage'));
+            }
+
+            return $ret;
+        }
+        not_association_homepage:
+
+        // donation_homepage
+        if ('' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'DonationBundle\\Controller\\DefaultController::indexAction',  '_route' => 'donation_homepage',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_donation_homepage;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'donation_homepage'));
+            }
+
+            return $ret;
+        }
+        not_donation_homepage:
 
         // refugee_homepage
         if ('' === $trimmedPathinfo) {
