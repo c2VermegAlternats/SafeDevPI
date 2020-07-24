@@ -3,7 +3,7 @@ refugee_homepage:
     defaults: { _controller: RefugeeBundle:Default:index }
 
 add:
-    path:     /add
+    path:     /add/{id}
     defaults: { _controller: RefugeeBundle:Refugee:add }
 affiche:
     path:     /affiche
@@ -40,3 +40,7 @@ update_benevole:
 deleteBen:
     path:     /deleteBen/{id}
     defaults: { _controller: RefugeeBundle:Benevole:delete }
+
+getBenByVille:
+    path:     /getBenLoc/{location}/{max}
+    defaults: { _controller: RefugeeBundle:Benevole:getBenevoleByLoc }

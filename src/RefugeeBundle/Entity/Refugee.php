@@ -22,23 +22,10 @@ class Refugee
     private $id;
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="Benevole")
+     * @ORM\ManyToOne(targetEntity="RefugeeBundle\Entity\Benevole")
      * @ORM\JoinColumn(name="benevole_id",referencedColumnName="id")
      */
     private $benevole;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="refFirstName", type="string", length=255 , nullable=true)
-     */
-    private $refFirstName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="refLastName", type="string", length=255 , nullable=true)
-     */
-    private $refLastName;
 
     /**
      * @var string
@@ -46,14 +33,6 @@ class Refugee
      * @ORM\Column(name="location", type="string", length=255)
      */
     private $location;
-
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="phoneNumber", type="integer",nullable=true)
-     */
-    private $phoneNumber;
 
     /**
      * @var int
@@ -97,20 +76,6 @@ class Refugee
      */
     private $mobile;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="isVolunteer", type="boolean",nullable=true)
-     */
-    private $isVolunteer;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="readyToJoin", type="boolean",nullable=true)
-     */
-    private $readyToJoin;
-
 
     /**
      * Get id
@@ -121,55 +86,6 @@ class Refugee
     {
         return $this->id;
     }
-
-    /**
-     * Set refFirstName
-     *
-     * @param string $refFirstName
-     *
-     * @return Refugee
-     */
-    public function setRefFirstName($refFirstName)
-    {
-        $this->refFirstName = $refFirstName;
-
-        return $this;
-    }
-
-    /**
-     * Get refFirstName
-     *
-     * @return string
-     */
-    public function getRefFirstName()
-    {
-        return $this->refFirstName;
-    }
-
-    /**
-     * Set refLastName
-     *
-     * @param string $refLastName
-     *
-     * @return Refugee
-     */
-    public function setRefLastName($refLastName)
-    {
-        $this->refLastName = $refLastName;
-
-        return $this;
-    }
-
-    /**
-     * Get refLastName
-     *
-     * @return string
-     */
-    public function getRefLastName()
-    {
-        return $this->refLastName;
-    }
-
     /**
      * Set location
      *
@@ -192,30 +108,6 @@ class Refugee
     public function getLocation()
     {
         return $this->location;
-    }
-
-    /**
-     * Set phoneNumber
-     *
-     * @param integer $phoneNumber
-     *
-     * @return Refugee
-     */
-    public function setPhoneNumber($phoneNumber)
-    {
-        $this->phoneNumber = $phoneNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get phoneNumber
-     *
-     * @return int
-     */
-    public function getPhoneNumber()
-    {
-        return $this->phoneNumber;
     }
 
     /**
@@ -362,53 +254,6 @@ class Refugee
         return $this->mobile;
     }
 
-    /**
-     * Set isVolunteer
-     *
-     * @param boolean $isVolunteer
-     *
-     * @return Refugee
-     */
-    public function setIsVolunteer($isVolunteer)
-    {
-        $this->isVolunteer = $isVolunteer;
-
-        return $this;
-    }
-
-    /**
-     * Get isVolunteer
-     *
-     * @return bool
-     */
-    public function getIsVolunteer()
-    {
-        return $this->isVolunteer;
-    }
-
-    /**
-     * Set readyToJoin
-     *
-     * @param boolean $readyToJoin
-     *
-     * @return Refugee
-     */
-    public function setReadyToJoin($readyToJoin)
-    {
-        $this->readyToJoin = $readyToJoin;
-
-        return $this;
-    }
-
-    /**
-     * Get readyToJoin
-     *
-     * @return bool
-     */
-    public function getReadyToJoin()
-    {
-        return $this->readyToJoin;
-    }
     /**
      * @return mixed
      */
