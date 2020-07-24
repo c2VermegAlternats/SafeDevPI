@@ -60,4 +60,12 @@ class BenevoleController extends Controller
         return new Response('Refugee supprimé avec succès') ;
     }
 
+    public function getBenevoleByLocAction($location,$max){
+        $em = $this->container->get("doctrine.orm.default_entity_manager");
+        $entities = $this->getDoctrine()->getRepository(Benevole::class)->recherche($location,$max);
+        $data = $this->get('jms_serializer')->serialize($entities, 'json');
+        $response = new Response($data);
+        return $response;
+    }
+
 }

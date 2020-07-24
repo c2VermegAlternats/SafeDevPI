@@ -24,9 +24,16 @@ class Benevole
     /**
      * @var string
      *
-     * @ORM\Column(name="socialStatus", type="string", length=255 , nullable=true)
+     * @ORM\Column(name="social_status", type="string", length=255, nullable=true)
      */
     private $socialStatus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="location", type="string", length=255, nullable=true)
+     */
+    private $location;
 
     /**
      * @var int
@@ -36,9 +43,16 @@ class Benevole
     private $age;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_ref", type="integer", nullable=true)
+     */
+    private $nbRef;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="supplies", type="string", length=255)
+     * @ORM\Column(name="supplies", type="string", length=255, nullable=true)
      */
     private $supplies;
 
@@ -52,9 +66,23 @@ class Benevole
     /**
      * @var bool
      *
-     * @ORM\Column(name="isVolunteer", type="boolean" , nullable=true)
+     * @ORM\Column(name="is_volunteer", type="boolean")
      */
     private $isVolunteer;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_available", type="boolean")
+     */
+    private $isAvailable;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_user", type="integer")
+     */
+    private $idUser;
 
 
     /**
@@ -92,6 +120,30 @@ class Benevole
     }
 
     /**
+     * Set location
+     *
+     * @param string $location
+     *
+     * @return Benevole
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
      * Set age
      *
      * @param integer $age
@@ -113,6 +165,30 @@ class Benevole
     public function getAge()
     {
         return $this->age;
+    }
+
+    /**
+     * Set nbRef
+     *
+     * @param integer $nbRef
+     *
+     * @return Benevole
+     */
+    public function setNbRef($nbRef)
+    {
+        $this->nbRef = $nbRef;
+
+        return $this;
+    }
+
+    /**
+     * Get nbRef
+     *
+     * @return int
+     */
+    public function getNbRef()
+    {
+        return $this->nbRef;
     }
 
     /**
@@ -185,6 +261,54 @@ class Benevole
     public function getIsVolunteer()
     {
         return $this->isVolunteer;
+    }
+
+    /**
+     * Set isAvailable
+     *
+     * @param boolean $isAvailable
+     *
+     * @return Benevole
+     */
+    public function setIsAvailable($isAvailable)
+    {
+        $this->isAvailable = $isAvailable;
+
+        return $this;
+    }
+
+    /**
+     * Get isAvailable
+     *
+     * @return bool
+     */
+    public function getIsAvailable()
+    {
+        return $this->isAvailable;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param integer $idUser
+     *
+     * @return Benevole
+     */
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return int
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
     }
 }
 

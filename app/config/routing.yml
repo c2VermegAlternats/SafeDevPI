@@ -2,7 +2,6 @@ user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
 
-
 association:
     resource: "@AssociationBundle/Resources/config/routing.yml"
 

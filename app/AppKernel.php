@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new RefugeeBundle\RefugeeBundle(),
-
             new AssociationBundle\AssociationBundle(),
 
             new DonationBundle\DonationBundle(),
