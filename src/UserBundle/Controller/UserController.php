@@ -33,7 +33,6 @@ class UserController extends Controller
         $data = $request->getContent();
         $newdata = $this->get('jms_serializer')->deserialize($data, 'UserBundle\Entity\User', 'json');
         $user->setLogin($newdata->getLogin());
-        $user->setUsername($newdata->getUsername());
         $user->setPassword($newdata->getPassword());
         $user->setEmail($newdata->getEmail());
         $user->setRoleType($newdata->getRoleType());
