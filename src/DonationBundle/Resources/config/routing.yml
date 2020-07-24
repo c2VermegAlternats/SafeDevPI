@@ -51,3 +51,15 @@ get_needs:
 get_all_needs:
     path:     /getAllNeeds
     defaults: { _controller: DonationBundle:Needs:getAllNeeds }
+
+get_needs_value:
+    path:     /getNeedsValue/{category}
+    defaults: { _controller: DonationBundle:Needs:getNeedsValue }
+
+get_don_value:
+    path:     /getDonValue/{category}/{id}
+    defaults: { _controller: DonationBundle:Don:getDonValue }
+
+get_need:
+    path:     /getNeed
+    defaults: { _controller: DonationBundle:Needs:getNeed }

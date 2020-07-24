@@ -126,6 +126,28 @@ class Needs
         return $this->idNeedy;
     }
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isDone", type="boolean")
+     */
+    private $isDone;
 
+    /**
+     * @return bool
+     */
+    public function isDone()
+    {
+        return $this->isDone;
+    }
+
+    /**
+     * @param bool $isDone
+     */
+    public function setIsDone($isDone)
+    {
+        $this->isDone = $isDone;
+        return $this;
+    }
 }
 

@@ -37,16 +37,14 @@ class Don
 
     /**
      *     * @var int
-
      * @ORM\Column(name="idDonnator", type="integer")
      */
     private $idDonnator;
 
     /**
-
      * @var
-     * @ORM\ManyToOne(targetEntity="DonationBundle\Entity\Needs")
-     * @ORM\JoinColumn(name="id_Needs",referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="DonationBundle\Entity\Needs" )
+     * @ORM\JoinColumn(name="id_Needs",referencedColumnName="id", onDelete="CASCADE")
      */
 
     private $needs;
@@ -64,8 +62,8 @@ class Don
      */
     public function setNeeds($needs)
     {
-        $this->needs=$needs;
-            }
+        $this->needs = $needs;
+    }
 
 
     /**
@@ -88,7 +86,7 @@ class Don
     public function setCategory($category)
     {
         $this->category = $category;
-    
+
         return $this;
     }
 
@@ -112,7 +110,7 @@ class Don
     public function setValue($value)
     {
         $this->value = $value;
-    
+
         return $this;
     }
 
@@ -136,7 +134,7 @@ class Don
     public function setIdDonnator($idDonnator)
     {
         $this->idDonnator = $idDonnator;
-    
+
         return $this;
     }
 
@@ -160,7 +158,7 @@ class Don
     public function setIdNeeds($idNeeds)
     {
         $this->idNeeds = $idNeeds;
-    
+
         return $this;
     }
 
@@ -173,5 +171,7 @@ class Don
     {
         return $this->idNeeds;
     }
+
+
 }
 

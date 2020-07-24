@@ -23,6 +23,12 @@ class NeedsController extends Controller
         return new Response('needs ajouté avec succès');
     }
 
+    public function getNeedsValueAction(Request $request){
+        $category = $request->get("category");
+        $response=$this->getDoctrine()->getRepository(Needs::class)->getNeedsByCategory($category);
+        return new JsonResponse(json_encode($response));
+    }
+
     public function deleteNeedsAction($id)
     {
         $em=$this->getDoctrine()->getManager();
@@ -39,9 +45,13 @@ class NeedsController extends Controller
         $data = $request->getContent();
         $newdata = $this->get('jms_serializer')->deserialize($data, 'DonationBundle\Entity\Needs', 'json');
         $needs->setCategory($newdata->getCategory());
+        $needs->setIsDone($newdata->isDone());
+
         $em->persist($needs);
         $em->flush();
         return new JsonResponse(["msg" => "success"], 200);
+
+
     }
 
     public function getNeedsAction(Needs $needs)
@@ -58,6 +68,13 @@ class NeedsController extends Controller
         $data = $this->get('jms_serializer')->serialize($needs, 'json');
         $response = new Response($data);
         return $response;
+    }
+
+    public function getNeedAction(){
+        $response=$this->getDoctrine()->getRepository(Needs::class)->getNeed();
+        $data = $this->get('jms_serializer')->serialize($response, 'json');
+
+        return new Response($data);
     }
 
 }

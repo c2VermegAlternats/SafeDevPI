@@ -10,4 +10,13 @@ namespace DonationBundle\Repository;
  */
 class DonRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getDonValueByCategory($category,$id)
+    {
+        $qb = $this->getEntityManager()
+            ->createQuery("SELECT SUM (e.value) as nb 
+                            FROM DonationBundle:Don e 
+                            WHERE e.category=:n and e.needs=:i")
+            ->setParameter('n', $category)->setParameter('i',$id);
+        return $qb->getResult();
+    }
 }

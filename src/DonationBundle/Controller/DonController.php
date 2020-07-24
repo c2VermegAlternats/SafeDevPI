@@ -38,6 +38,15 @@ class DonController extends Controller
 
     }
 
+    public function getDonValueAction(Request $request)
+    {
+        $category = $request->get("category");
+        $id = $request->get("id");
+        $nbr = $this->getDoctrine()->getRepository(Don::class)->getDonValueByCategory($category, $id);
+        $data = $this->get('jms_serializer')->serialize($nbr, 'json');
+        return new Response($data);
+        return new JsonResponse($data);
+    }
     public function updateDonAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();
