@@ -1,7 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c7f5c8c-9293-4758-bc71-1aefa27bf5ad" name="Default Changelist" comment="" />
+    <list default="true" id="8c7f5c8c-9293-4758-bc71-1aefa27bf5ad" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Controller/DefaultController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Controller/DonController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Controller/NeedsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/DonationBundle.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Entity/Don.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Entity/Needs.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Repository/DonRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Repository/NeedsRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/config/routing.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/config/services.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/views/Default/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/views/Don/add_don.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/views/Don/delete_don.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/views/Don/get_all_don.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/views/Don/get_don.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/views/Don/update_don.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/views/Needs/add_needs.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/views/Needs/delete_needs.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/views/Needs/get_all_needs.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Resources/views/Needs/get_needs.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Tests/Controller/DonControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DonationBundle/Tests/Controller/NeedsControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Controller/DefaultController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Controller/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Entity/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Resources/config/routing.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Resources/config/services.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Resources/views/Default/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Resources/views/User/add_user.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Resources/views/User/delete_user.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Resources/views/User/get_all_users.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Resources/views/User/get_user.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Resources/views/User/update_user.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/Tests/Controller/UserControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserBundle/UserBundle.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/UserBundle/Controller/DefaultControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/AppKernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AppKernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/routing.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationBundle/Controller/AssociationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationBundle/Controller/AssociationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationBundle/Controller/CategorieController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationBundle/Entity/Association.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationBundle/Entity/Association.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationBundle/Entity/Categorie.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationBundle/Entity/Reclamation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationBundle/Entity/Reclamation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationBundle/Entity/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationBundle/Repository/CategorieRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationBundle/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserBundle/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationBundle/Resources/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationBundle/Resources/config/routing.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerCompiler.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/logs/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/dev.log" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,14 +126,20 @@
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/vendor/phpcollection/phpcollection" />
       <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/rest-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1drSNeewhVH1BSCf2WpffsDZ60w" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PiWeb" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
   </component>
@@ -81,6 +148,16 @@
       <command value="s doctrine:schema:update" />
       <command value="s generate:bundle " />
       <command value="c dump-autoload" />
+      <command value="s doctrine:database:create" />
+      <command value="cache:clear app" />
+      <command value="cache:clear bin" />
+      <command value="cache:clear app/bin" />
+      <command value="cache:clear --env app" />
+      <command value="cache:clear " />
+      <command value="s generate:bundle" />
+      <command value="s doctrine:generate:entity" />
+      <command value="s generate:controller" />
+      <command value="s doctrine:schema:update --force" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -108,21 +185,32 @@
       <workItem from="1593181681287" duration="31329000" />
       <workItem from="1594680651418" duration="753000" />
       <workItem from="1594767123162" duration="3119000" />
+      <workItem from="1595010382511" duration="35102000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$USER_HOME$/Desktop/New folder/SafeBoard/node_modules/.staging/karma-f75b9054/config.tpl.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
