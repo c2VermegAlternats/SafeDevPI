@@ -40,12 +40,19 @@ class Refugee
      * @ORM\Column(name="age", type="integer")
      */
     private $age;
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="value", type="float")
+     */
+    private $value;
 
     /**
      * @var string
      *
      * @ORM\Column(name="needs", type="string", length=255)
      */
+
     private $needs;
 
     /**
@@ -75,6 +82,12 @@ class Refugee
      * @ORM\Column(name="mobile", type="integer")
      */
     private $mobile;
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_complete", type="boolean")
+     */
+    private $isComplete;
 
 
     /**
@@ -133,7 +146,29 @@ class Refugee
     {
         return $this->age;
     }
+    /**
+     * Set value
+     *
+     * @param float $value
+     *
+     * @return Refugee
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
 
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return float
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
     /**
      * Set needs
      *
@@ -270,6 +305,29 @@ class Refugee
         $this->benevole = $benevole;
 
         return $this;
+    }
+    /**
+     * Set isComplete
+     *
+     * @param boolean $isComplete
+     *
+     * @return Benevole
+     */
+    public function setIsComplete($isComplete)
+    {
+        $this->isComplete = $isComplete;
+
+        return $this;
+    }
+
+    /**
+     * Get isComplete
+     *
+     * @return bool
+     */
+    public function getIsComplete()
+    {
+        return $this->isComplete;
     }
 }
 

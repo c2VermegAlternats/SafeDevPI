@@ -59,7 +59,7 @@ class RefugeeController extends Controller
         $refugee = $em->getRepository(Refugee::class)->find($id);
         $data = $request->getContent();
         $newdata = $this->get('jms_serializer')->deserialize($data, 'RefugeeBundle\Entity\Refugee', 'json');
-        $refugee->setLocation($newdata->getLocation());
+        $refugee->setIsComplete($newdata->getIsComplete());
         $em->persist($refugee);
         $em->flush();
         return new JsonResponse(["msg" => "success"], 200);
@@ -71,5 +71,19 @@ class RefugeeController extends Controller
         $em->remove($refugee);
         $em->flush();
         return new Response('Refugee supprimé avec succès') ;
+    }
+    public function getCountRefAction($location){
+        $em = $this->container->get("doctrine.orm.default_entity_manager");
+        $entities = $this->getDoctrine()->getRepository(Refugee::class)->countBen($location);
+        $data = $this->get('jms_serializer')->serialize($entities, 'json');
+        $response = new Response($data);
+        return $response;
+    }
+    public function sumByNeedsAction(){
+        $em = $this->container->get("doctrine.orm.default_entity_manager");
+        $entities = $this->getDoctrine()->getRepository(Refugee::class)->sumByNeeds();
+        $data = $this->get('jms_serializer')->serialize($entities, 'json');
+        $response = new Response($data);
+        return $response;
     }
 }

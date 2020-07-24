@@ -17,9 +17,12 @@ update:
 delete:
     path:     /delete/{id}
     defaults: { _controller: RefugeeBundle:Refugee:delete}
-
-
-
+getCountRef:
+    path:     /getCountRef/{location}
+    defaults: { _controller: RefugeeBundle:Refugee:getCountRef}
+Sum:
+    path:     /sumByNeeds
+    defaults: { _controller: RefugeeBundle:Refugee:sumByNeeds}
 
 addBen:
     path:     /addBen
