@@ -10,10 +10,9 @@ namespace RefugeeBundle\Repository;
  */
 class RefugeeRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function countBen($location){
-        $query= $this->getEntityManager()->createQuery("Select count(v)  FROM RefugeeBundle:Refugee v
-      WHERE  v.location =:location")
-            ->setParameter('location',$location);
+    public function countRef(){
+        $query= $this->getEntityManager()->createQuery("Select count(v) as c , v.location  FROM RefugeeBundle:Refugee v
+      group by v.location");
 
 
         return $query->getResult();
