@@ -85,7 +85,7 @@ class Refugee
     /**
      * @var bool
      *
-     * @ORM\Column(name="is_complete", type="boolean")
+     * @ORM\Column(name="is_complete", type="boolean", nullable=true)
      */
     private $isComplete;
 

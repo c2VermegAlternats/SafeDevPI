@@ -19,4 +19,12 @@ $value = 'true';
 
         return $query->getResult();
     }
+
+    public function countBen(){
+        $query= $this->getEntityManager()->createQuery("Select count(v) as c , v.location  FROM RefugeeBundle:Benevole v
+      group by v.location");
+
+
+        return $query->getResult();
+    }
 }

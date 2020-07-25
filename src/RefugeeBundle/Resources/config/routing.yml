@@ -18,7 +18,7 @@ delete:
     path:     /delete/{id}
     defaults: { _controller: RefugeeBundle:Refugee:delete}
 getCountRef:
-    path:     /getCountRef/{location}
+    path:     /getCountRef
     defaults: { _controller: RefugeeBundle:Refugee:getCountRef}
 Sum:
     path:     /sumByNeeds
@@ -47,3 +47,7 @@ deleteBen:
 getBenByVille:
     path:     /getBenLoc/{location}/{max}
     defaults: { _controller: RefugeeBundle:Benevole:getBenevoleByLoc }
+
+getcountBen:
+    path:     /getcountBen
+    defaults: { _controller: RefugeeBundle:Benevole:getcountBen }

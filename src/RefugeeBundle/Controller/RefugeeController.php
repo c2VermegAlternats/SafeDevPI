@@ -72,9 +72,9 @@ class RefugeeController extends Controller
         $em->flush();
         return new Response('Refugee supprimé avec succès') ;
     }
-    public function getCountRefAction($location){
+    public function getCountRefAction(){
         $em = $this->container->get("doctrine.orm.default_entity_manager");
-        $entities = $this->getDoctrine()->getRepository(Refugee::class)->countBen($location);
+        $entities = $this->getDoctrine()->getRepository(Refugee::class)->countRef();
         $data = $this->get('jms_serializer')->serialize($entities, 'json');
         $response = new Response($data);
         return $response;
