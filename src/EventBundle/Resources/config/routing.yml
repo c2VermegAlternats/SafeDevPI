@@ -1,0 +1,40 @@
+event_homepage:
+    path:     /
+    defaults: { _controller: EventBundle:Default:index }
+addEvent:
+    path:     /addEvent
+    defaults: { _controller: EventBundle:Event:addEvent }
+
+deleteEvent:
+    path:     /deleteEvent/{id}
+    defaults: { _controller: EventBundle:Event:deleteEvent }
+
+updateEvent:
+    path:     /updateEvent/{id}
+    defaults: { _controller: EventBundle:Event:updateEvent }
+
+listEvent:
+    path:     /listEvent
+    defaults: { _controller: EventBundle:Event:listEvent }
+
+searchEvent:
+    path:     /searchEvent/{id}
+    defaults: { _controller: EventBundle:Event:searchEvent }
+
+updateReservation:
+    path:     /updateReservation/{id}
+    defaults: { _controller: EventBundle:Event:updateReservation }
+
+addReservation:
+    path:     /addReservation/{idevent}
+    defaults: { _controller: EventBundle:Reservation:addReservation }
+
+getRes:
+    path:     /getRes/{iduser}/{idevent}
+    defaults: { _controller: EventBundle:Reservation:getRes }
+
+
+
+
+
+
