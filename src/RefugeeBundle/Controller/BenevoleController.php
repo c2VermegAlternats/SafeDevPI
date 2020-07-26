@@ -45,8 +45,7 @@ class BenevoleController extends Controller
         $benevole = $em->getRepository(Benevole::class)->find($id);
         $data = $request->getContent();
         $newdata = $this->get('jms_serializer')->deserialize($data, 'RefugeeBundle\Entity\Benevole', 'json');
-        $benevole->setNbRef($newdata->getNbRef());
-        $benevole->setIsAvailable($newdata->getIsAvailable());
+        $benevole->setAge($newdata->getAge());
         $em->persist( $benevole);
         $em->flush();
         return new JsonResponse(["msg" => "success"], 200);
@@ -59,21 +58,6 @@ class BenevoleController extends Controller
         $em->remove($benevole);
         $em->flush();
         return new Response('Refugee supprimé avec succès') ;
-    }
-
-    public function getBenevoleByLocAction($location,$max){
-        $em = $this->container->get("doctrine.orm.default_entity_manager");
-        $entities = $this->getDoctrine()->getRepository(Benevole::class)->recherche($location,$max);
-        $data = $this->get('jms_serializer')->serialize($entities, 'json');
-        $response = new Response($data);
-        return $response;
-    }
-    public function getcountBenAction(){
-        $em = $this->container->get("doctrine.orm.default_entity_manager");
-        $entities = $this->getDoctrine()->getRepository(Benevole::class)->countBen();
-        $data = $this->get('jms_serializer')->serialize($entities, 'json');
-        $response = new Response($data);
-        return $response;
     }
 
 }

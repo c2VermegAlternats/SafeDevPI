@@ -22,10 +22,23 @@ class Refugee
     private $id;
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="RefugeeBundle\Entity\Benevole")
+     * @ORM\ManyToOne(targetEntity="Benevole")
      * @ORM\JoinColumn(name="benevole_id",referencedColumnName="id")
      */
     private $benevole;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="refFirstName", type="string", length=255 , nullable=true)
+     */
+    private $refFirstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="refLastName", type="string", length=255 , nullable=true)
+     */
+    private $refLastName;
 
     /**
      * @var string
@@ -34,25 +47,26 @@ class Refugee
      */
     private $location;
 
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="phoneNumber", type="integer",nullable=true)
+     */
+    private $phoneNumber;
+
     /**
      * @var int
      *
      * @ORM\Column(name="age", type="integer")
      */
     private $age;
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="value", type="float")
-     */
-    private $value;
 
     /**
      * @var string
      *
      * @ORM\Column(name="needs", type="string", length=255)
      */
-
     private $needs;
 
     /**
@@ -82,12 +96,20 @@ class Refugee
      * @ORM\Column(name="mobile", type="integer")
      */
     private $mobile;
+
     /**
      * @var bool
      *
-     * @ORM\Column(name="is_complete", type="boolean", nullable=true)
+     * @ORM\Column(name="isVolunteer", type="boolean",nullable=true)
      */
-    private $isComplete;
+    private $isVolunteer;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="readyToJoin", type="boolean",nullable=true)
+     */
+    private $readyToJoin;
 
 
     /**
@@ -99,6 +121,55 @@ class Refugee
     {
         return $this->id;
     }
+
+    /**
+     * Set refFirstName
+     *
+     * @param string $refFirstName
+     *
+     * @return Refugee
+     */
+    public function setRefFirstName($refFirstName)
+    {
+        $this->refFirstName = $refFirstName;
+
+        return $this;
+    }
+
+    /**
+     * Get refFirstName
+     *
+     * @return string
+     */
+    public function getRefFirstName()
+    {
+        return $this->refFirstName;
+    }
+
+    /**
+     * Set refLastName
+     *
+     * @param string $refLastName
+     *
+     * @return Refugee
+     */
+    public function setRefLastName($refLastName)
+    {
+        $this->refLastName = $refLastName;
+
+        return $this;
+    }
+
+    /**
+     * Get refLastName
+     *
+     * @return string
+     */
+    public function getRefLastName()
+    {
+        return $this->refLastName;
+    }
+
     /**
      * Set location
      *
@@ -124,6 +195,30 @@ class Refugee
     }
 
     /**
+     * Set phoneNumber
+     *
+     * @param integer $phoneNumber
+     *
+     * @return Refugee
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneNumber
+     *
+     * @return int
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
      * Set age
      *
      * @param integer $age
@@ -146,29 +241,7 @@ class Refugee
     {
         return $this->age;
     }
-    /**
-     * Set value
-     *
-     * @param float $value
-     *
-     * @return Refugee
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
 
-        return $this;
-    }
-
-    /**
-     * Get value
-     *
-     * @return float
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
     /**
      * Set needs
      *
@@ -290,6 +363,53 @@ class Refugee
     }
 
     /**
+     * Set isVolunteer
+     *
+     * @param boolean $isVolunteer
+     *
+     * @return Refugee
+     */
+    public function setIsVolunteer($isVolunteer)
+    {
+        $this->isVolunteer = $isVolunteer;
+
+        return $this;
+    }
+
+    /**
+     * Get isVolunteer
+     *
+     * @return bool
+     */
+    public function getIsVolunteer()
+    {
+        return $this->isVolunteer;
+    }
+
+    /**
+     * Set readyToJoin
+     *
+     * @param boolean $readyToJoin
+     *
+     * @return Refugee
+     */
+    public function setReadyToJoin($readyToJoin)
+    {
+        $this->readyToJoin = $readyToJoin;
+
+        return $this;
+    }
+
+    /**
+     * Get readyToJoin
+     *
+     * @return bool
+     */
+    public function getReadyToJoin()
+    {
+        return $this->readyToJoin;
+    }
+    /**
      * @return mixed
      */
     public function getBenevole()
@@ -305,29 +425,6 @@ class Refugee
         $this->benevole = $benevole;
 
         return $this;
-    }
-    /**
-     * Set isComplete
-     *
-     * @param boolean $isComplete
-     *
-     * @return Benevole
-     */
-    public function setIsComplete($isComplete)
-    {
-        $this->isComplete = $isComplete;
-
-        return $this;
-    }
-
-    /**
-     * Get isComplete
-     *
-     * @return bool
-     */
-    public function getIsComplete()
-    {
-        return $this->isComplete;
     }
 }
 

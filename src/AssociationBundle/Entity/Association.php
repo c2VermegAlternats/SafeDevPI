@@ -323,8 +323,7 @@ class Association
 
     /**
      * Set categorie
-     *
-     * @param string $categorie
+     *     * @param string $categorie
      *
      * @return Association
      */
@@ -332,7 +331,5 @@ class Association
     {
         $this->categorie = $categorie;
     }
-
-
 }
 

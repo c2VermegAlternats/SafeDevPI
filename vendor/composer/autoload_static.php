@@ -59,7 +59,6 @@ class ComposerStaticInit2c8531c28d01833389541ee9289a169b
         'N' => 
         array (
             'Nelmio\\CorsBundle\\' => 18,
-            'Negotiation\\' => 12,
         ),
         'M' => 
         array (
@@ -76,7 +75,6 @@ class ComposerStaticInit2c8531c28d01833389541ee9289a169b
         'F' => 
         array (
             'Fig\\Link\\' => 9,
-            'FOS\\RestBundle\\' => 15,
         ),
         'D' => 
         array (
@@ -207,10 +205,6 @@ class ComposerStaticInit2c8531c28d01833389541ee9289a169b
         array (
             0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
         ),
-        'Negotiation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
-        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -226,10 +220,6 @@ class ComposerStaticInit2c8531c28d01833389541ee9289a169b
         'Fig\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/link-util/src',
-        ),
-        'FOS\\RestBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/friendsofsymfony/rest-bundle',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -293,10 +283,6 @@ class ComposerStaticInit2c8531c28d01833389541ee9289a169b
         ),
         'J' => 
         array (
-            'JsonpCallbackValidator' => 
-            array (
-                0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
-            ),
             'JMS\\Serializer' => 
             array (
                 0 => __DIR__ . '/..' . '/jms/serializer/src',
@@ -333,6 +319,7 @@ class ComposerStaticInit2c8531c28d01833389541ee9289a169b
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
         'Collator' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/Intl/Resources/stubs/Collator.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DivisionByZeroError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/DivisionByZeroError.php',
         'Error' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/Error.php',
         'IntlDateFormatter' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/Intl/Resources/stubs/IntlDateFormatter.php',

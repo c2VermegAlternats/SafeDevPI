@@ -31,28 +31,9 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="first_name", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255, unique=true)
      */
-    private $firstName;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="last_name", type="string", length=255)
-     */
-    private $lastName;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adresse", type="string", length=255)
-     */
-    private $adresse;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tel", type="string", length=255)
-     */
-    private $tel;
+    private $username;
 
     /**
      * @var string
@@ -71,9 +52,9 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="role_type", type="string", length=255)
+     * @ORM\Column(name="role", type="string", length=255)
      */
-    private $roleType;
+    private $role;
 
 
     /**
@@ -110,9 +91,29 @@ class User
         return $this->login;
     }
 
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    
+        return $this;
+    }
 
-
-
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
 
     /**
      * Set password
@@ -165,13 +166,13 @@ class User
     /**
      * Set roleType
      *
-     * @param string $roleType
+     * @param string $role
      *
      * @return User
      */
-    public function setRoleType($roleType)
+    public function setRoleType($role)
     {
-        $this->roleType = $roleType;
+        $this->role = $role;
     
         return $this;
     }
@@ -181,9 +182,9 @@ class User
      *
      * @return string
      */
-    public function getRoleType()
+    public function getRole()
     {
-        return $this->roleType;
+        return $this->role;
     }
 }
 

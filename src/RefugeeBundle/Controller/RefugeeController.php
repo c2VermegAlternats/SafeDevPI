@@ -2,7 +2,6 @@
 
 namespace RefugeeBundle\Controller;
 
-use RefugeeBundle\Entity\Benevole;
 use RefugeeBundle\Entity\Refugee;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,28 +12,15 @@ class RefugeeController extends Controller
 {
     public function addAction(Request $request)
     {
+        //récupérer le contenu de la requête envoyé par l'outil postman
         $data = $request->getContent();
 //deserialize data: création d'un objet 'Refugee' à partir des données json envoyées
         $refugee = $this->get('jms_serializer')->deserialize($data, 'RefugeeBundle\Entity\Refugee', 'json');
-
-        $benevole = $request->get("id");
 //ajout dans la base
         $em = $this->getDoctrine()->getManager();
-        $array_projets=$this->getDoctrine()->getRepository(Benevole::class)->findById($benevole);
-        if($array_projets!=NULL) {
-            $one_projet_object = $array_projets[0];
-            //this object will be passed to the setProjet() method as a parameter
-            //by this way we can set the last attribute af our 'Etudiant' which is the 'projet'
-            $refugee->setBenevole($one_projet_object);
-            //we get our entity manager
-            $em->persist($refugee);
-            //flush execute the query insert into...
-            $em->flush();
-            return new Response('don ajouté avec succès');
-
-        }
-        return new Response($benevole);
-
+        $em->persist($refugee);
+        $em->flush();
+        return new Response('Refugee ajouté avec succès');
     }
 
     public function getAllRefugeesAction()
@@ -59,7 +45,7 @@ class RefugeeController extends Controller
         $refugee = $em->getRepository(Refugee::class)->find($id);
         $data = $request->getContent();
         $newdata = $this->get('jms_serializer')->deserialize($data, 'RefugeeBundle\Entity\Refugee', 'json');
-        $refugee->setIsComplete($newdata->getIsComplete());
+        $refugee->setLocation($newdata->getLocation());
         $em->persist($refugee);
         $em->flush();
         return new JsonResponse(["msg" => "success"], 200);
@@ -71,19 +57,5 @@ class RefugeeController extends Controller
         $em->remove($refugee);
         $em->flush();
         return new Response('Refugee supprimé avec succès') ;
-    }
-    public function getCountRefAction(){
-        $em = $this->container->get("doctrine.orm.default_entity_manager");
-        $entities = $this->getDoctrine()->getRepository(Refugee::class)->countRef();
-        $data = $this->get('jms_serializer')->serialize($entities, 'json');
-        $response = new Response($data);
-        return $response;
-    }
-    public function sumByNeedsAction(){
-        $em = $this->container->get("doctrine.orm.default_entity_manager");
-        $entities = $this->getDoctrine()->getRepository(Refugee::class)->sumByNeeds();
-        $data = $this->get('jms_serializer')->serialize($entities, 'json');
-        $response = new Response($data);
-        return $response;
     }
 }
