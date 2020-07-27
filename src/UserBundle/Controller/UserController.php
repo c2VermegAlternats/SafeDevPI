@@ -33,10 +33,9 @@ class UserController extends Controller
         $data = $request->getContent();
         $newdata = $this->get('jms_serializer')->deserialize($data, 'UserBundle\Entity\User', 'json');
         $user->setLogin($newdata->getLogin());
-        $user->setUsername($newdata->getUsername());
         $user->setPassword($newdata->getPassword());
         $user->setEmail($newdata->getEmail());
-        $user->setRoleType($newdata->getRole());
+        $user->setRoleType($newdata->getRoleType());
         $em->persist($user);
         $em->flush();
 
@@ -45,9 +44,14 @@ class UserController extends Controller
         return $response;
     }
 
-    public function getUserAction(User $user)
+    public function getUserAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $id=$request->get('id');
+        $user = $em->getRepository(User::class)->find($id);
+
         $data = $this->get('jms_serializer')->serialize($user, 'json');
+
         $response = new Response($data);
         $response->headers->set('Access-Control-Allow-Origin', 'http://localhost:4200/refugees');
         return $response;
