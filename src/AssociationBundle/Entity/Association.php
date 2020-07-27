@@ -90,9 +90,21 @@ class Association
     /**
      * @var string
      *
-     * @ORM\Column(name="categoriet", type="string", length=255, nullable=true)
+     * @ORM\Column(name="categorie", type="string", length=255, nullable=true)
      */
     private $categorie;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nombre_reclamation", type="integer", nullable=true)
+     */
+    private $nombre_reclamation;
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_reclaimed", type="integer", nullable=true)
+     */
+    private $is_reclaimed;
     /**
      * Get id
      *
@@ -300,7 +312,7 @@ class Association
      */
     public function getIdUser()
     {
-        return $this->id_ser;
+        return $this->id_user;
     }
 
     /**
@@ -309,6 +321,7 @@ class Association
     public function setIdUser($id_user)
     {
         $this->id_user = $id_user;
+        return $this;
     }
 
     /**
@@ -323,13 +336,50 @@ class Association
 
     /**
      * Set categorie
-     *     * @param string $categorie
+     *
+     * @param string $categorie
      *
      * @return Association
      */
     public function setCategorie($categorie)
     {
         $this->categorie = $categorie;
+        return $this;
     }
+
+
+    /**
+     * @return int
+     */
+    public function getNombreReclamation()
+    {
+        return $this->nombre_reclamation;
+    }
+
+    /**
+     * @param int $nombre_reclamation
+     */
+    public function setNombreReclamation($nombre_reclamation)
+    {
+        $this->nombre_reclamation = $nombre_reclamation;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsReclaimed()
+    {
+        return $this->is_reclaimed;
+    }
+
+    /**
+     * @param boolean $is_reclaimed
+     */
+    public function setIsReclaimed($is_reclaimed)
+    {
+        $this->is_reclaimed = $is_reclaimed;
+    }
+
+
 }
 
