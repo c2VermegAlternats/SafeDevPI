@@ -3,7 +3,7 @@ refugee_homepage:
     defaults: { _controller: RefugeeBundle:Default:index }
 
 add:
-    path:     /add
+    path:     /add/{id}
     defaults: { _controller: RefugeeBundle:Refugee:add }
 affiche:
     path:     /affiche
@@ -17,12 +17,15 @@ update:
 delete:
     path:     /delete/{id}
     defaults: { _controller: RefugeeBundle:Refugee:delete}
-
-
-
+getCountRef:
+    path:     /getCountRef
+    defaults: { _controller: RefugeeBundle:Refugee:getCountRef}
+Sum:
+    path:     /sumByNeeds
+    defaults: { _controller: RefugeeBundle:Refugee:sumByNeeds}
 
 addBen:
-    path:     /addBen
+    path:     /addBen/{id}
     defaults: { _controller: RefugeeBundle:Benevole:add }
 
 get_all:
@@ -40,3 +43,23 @@ update_benevole:
 deleteBen:
     path:     /deleteBen/{id}
     defaults: { _controller: RefugeeBundle:Benevole:delete }
+
+getBenByVille:
+    path:     /getBenLoc/{location}/{max}
+    defaults: { _controller: RefugeeBundle:Benevole:getBenevoleByLoc }
+
+getcountBen:
+    path:     /getcountBen
+    defaults: { _controller: RefugeeBundle:Benevole:getcountBen }
+
+getBenByUser:
+    path:     /getBenbyUser/{id}
+    defaults: { _controller: RefugeeBundle:Benevole:getBenbyUser }
+
+
+getRefByBen:
+    path:     /getRefByBen/{user}
+    defaults: { _controller: RefugeeBundle:Refugee:getRefByBen }
+getRefIsDone:
+    path:     /getRefIsDone/
+    defaults: { _controller: RefugeeBundle:Refugee:getRefIsDone }

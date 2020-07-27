@@ -10,4 +10,26 @@ namespace RefugeeBundle\Repository;
  */
 class BenevoleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function recherche($location,$max){
+$value = 'true';
+        $query= $this->getEntityManager()->createQuery("Select v   FROM RefugeeBundle:Benevole v
+      WHERE  v.location =:location and v.nbRef!=:max and v.isAvailable = true order by v.nbRef asc" )
+            ->setParameter('location',$location)->setParameter('max',$max);
+
+
+        return $query->getResult();
+    }
+
+    public function countBen(){
+        $query= $this->getEntityManager()->createQuery("Select count(v) as c , v.location  FROM RefugeeBundle:Benevole v
+      group by v.location");
+
+
+        return $query->getResult();
+    }
+    public function getBenbyUser(){
+      $query= $this->getEntityManager()->createQuery("Select v FROM RefugeeBundle:Benevole" );
+        return $query->getResult();
+
+    }
 }
