@@ -17,12 +17,13 @@ class RefugeeRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
-    public function sumByNeeds(){
-        $query= $this->getEntityManager()->createQuery("Select v.needs, SUM(v.value)  FROM RefugeeBundle:Refugee v
+       public function sumByNeeds(){
+        $query= $this->getEntityManager()->createQuery("Select v.needs as category, SUM(v.value) as value , v.id as id_needy FROM RefugeeBundle:Refugee v
       group by  v.needs" );
 
         return $query->getResult();
     }
+
 
     public function getRefByBen($idBen){
         $query= $this->getEntityManager()->createQuery("Select v FROM RefugeeBundle:Refugee v
