@@ -1,0 +1,49 @@
+association_homepage:
+    path:     /
+    defaults: { _controller: AssociationBundle:Default:index }
+
+add_reclamation:
+    path:     /addReclamation/{iduser}/{idasso}
+    defaults: { _controller: AssociationBundle:Reclamation:addReclamation }
+
+update_reclamation:
+    path:     /updateReclamation/{id}
+    defaults: { _controller: AssociationBundle:Reclamation:updateReclamation }
+
+get_all_reclamations:
+    path:     /getAllReclamations
+    defaults: { _controller: AssociationBundle:Reclamation:getAllReclamations }
+
+get_reclamation:
+    path:     /getReclamation/{id}
+    defaults: { _controller: AssociationBundle:Reclamation:getReclamation }
+
+delete_reclamation:
+    path:     /deleteReclamation
+    defaults: { _controller: AssociationBundle:Reclamation:deleteReclamation }
+
+add_association:
+    path:     /addAssociation
+    defaults: { _controller: AssociationBundle:Association:addAssociation }
+
+update_association:
+    path:     /updateAssociation/{id}
+    defaults: { _controller: AssociationBundle:Association:updateAssociation }
+
+get_all_association:
+    path:     /getAllAssociation
+    defaults: { _controller: AssociationBundle:Association:getAllAssociation }
+
+get_association:
+    path:     /getAssociation/{id}
+    defaults: { _controller: AssociationBundle:Association:getAssociation }
+
+delete_association:
+    path:     /deleteAssociation/{id}
+    defaults: { _controller: AssociationBundle:Association:deleteAssociation }
+get_nombre_reclamation:
+    path:     /getNombreReclamation/{id}
+    defaults: { _controller: AssociationBundle:Association:getNombreReclamation }
+is_reclaimed:
+    path:     /isReclaimed/{id}
+    defaults: { _controller: AssociationBundle:Association:isReclaimed }
