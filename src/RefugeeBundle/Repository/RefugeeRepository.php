@@ -10,4 +10,31 @@ namespace RefugeeBundle\Repository;
  */
 class RefugeeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function countRef(){
+        $query= $this->getEntityManager()->createQuery("Select count(v) as c , v.location  FROM RefugeeBundle:Refugee v
+      group by v.location");
+
+
+        return $query->getResult();
+    }
+       public function sumByNeeds(){
+        $query= $this->getEntityManager()->createQuery("Select v.needs as category, SUM(v.value) as value , v.id as id_needy FROM RefugeeBundle:Refugee v
+      group by  v.needs" );
+
+        return $query->getResult();
+    }
+
+
+    public function getRefByBen($idBen){
+        $query= $this->getEntityManager()->createQuery("Select v FROM RefugeeBundle:Refugee v
+      where v.benevole =: benevole " )->setParameter('benevole',$idBen);
+
+        return $query->getResult();
+    }
+    public function getRefIsDone(){
+        $query= $this->getEntityManager()->createQuery("Select v FROM RefugeeBundle:Refugee v
+      WHERE   v.isComplete = 1 " );
+
+        return $query->getResult();
+    }
 }
