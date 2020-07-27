@@ -84,6 +84,8 @@ class RefugeeController extends Controller
         $entities = $this->getDoctrine()->getRepository(Refugee::class)->sumByNeeds();
         $data = $this->get('jms_serializer')->serialize($entities, 'json');
         $response = new Response($data);
+        $response->headers->set('Access-Control-Allow-Origin', 'http://localhost:4200/refugee');
+
         return $response;
     }
 }

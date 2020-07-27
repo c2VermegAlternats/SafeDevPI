@@ -131,7 +131,7 @@ class Needs
      *
      * @ORM\Column(name="isDone", type="boolean")
      */
-    private $isDone;
+    private $isDone= false;
 
     /**
      * @return bool
